@@ -2,6 +2,14 @@
 
 A powerful LocalWP addon that brings essential WordPress debugging and development tools directly into the LocalWP interface. Manage plugins, themes, debug constants, error logs, database snapshots, caches, and PHP server configuration — all without leaving LocalWP or loading wp-admin.
 
+## Screenshots
+
+![Addon Installed](screenshots/addon-installed.png)
+*LocalWP Dev Tools installed and enabled in the Add-ons panel*
+
+![Debug Mode](screenshots/debug-mode.png)
+*Debug Mode — Toggle WordPress debug constants directly from LocalWP*
+
 ## Features
 
 | Tool | What it does | Key capabilities |

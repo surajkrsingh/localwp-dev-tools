@@ -1,7 +1,7 @@
 {
   "name": "localwp-debugging-tool",
   "productName": "LocalWP Dev Tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "LocalWP addon for debugging WordPress sites - manage plugins, themes, debug mode, error logs, DB snapshots, cache flush, and server config",
   "main": "lib/main.js",
   "renderer": "lib/renderer.js",
