@@ -6,8 +6,9 @@
   "main": "lib/main.js",
   "renderer": "lib/renderer.js",
   "scripts": {
-    "build": "tsc && babel src --out-dir lib --extensions '.js,.jsx,.ts,.tsx'",
-    "watch": "babel src --out-dir lib --extensions '.js,.jsx,.ts,.tsx' --watch"
+    "build": "babel src --out-dir lib --extensions '.js,.jsx,.ts,.tsx'",
+    "watch": "babel src --out-dir lib --extensions '.js,.jsx,.ts,.tsx' --watch",
+    "package": "npm run build && node scripts/package.js"
   },
   "local": {
     "minVersion": "6.5.2"

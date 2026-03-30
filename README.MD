@@ -18,30 +18,24 @@ A powerful LocalWP addon that brings essential WordPress debugging and developme
 
 ## Installation
 
-### From Source
+### Download (Recommended)
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/user/localwp-debugging-tool.git
-   ```
-
-2. Install dependencies:
-   ```bash
-   cd localwp-debugging-tool
-   npm install
-   ```
-
-3. Build:
-   ```bash
-   npm run build
-   ```
-
-4. Symlink into LocalWP's addons directory:
-   ```bash
-   ln -s "$(pwd)" ~/Library/Application\ Support/Local/addons/localwp-debugging-tool
-   ```
-
+1. Go to the [Releases](https://github.com/surajkrsingh/localwp-dev-tools/releases) page
+2. Download the latest `localwp-dev-tools-vX.X.X.zip`
+3. Open LocalWP → **Add-ons** → **Install from Disk**
+4. Select the downloaded `.zip` file
 5. Restart LocalWP
+
+### From Source (Developers)
+
+```bash
+git clone https://github.com/surajkrsingh/localwp-dev-tools.git
+cd localwp-dev-tools
+npm install
+npm run build
+ln -s "$(pwd)" ~/Library/Application\ Support/Local/addons/localwp-dev-tools
+# Restart LocalWP
+```
 
 ### Addon Locations
 
