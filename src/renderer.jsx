@@ -12,6 +12,8 @@ import ErrorLogViewer from './ErrorLogViewer';
 import DbSnapshot from './DbSnapshot';
 import CacheFlush from './CacheFlush';
 import ServerConfig from './ServerConfig';
+import CronManager from './CronManager';
+import UserSwitcher from './UserSwitcher';
 
 const path = require('path');
 
@@ -34,6 +36,8 @@ export default function (context) {
 			{ path: '/debugging-tool-db-snapshots', menuItem: 'DB Snapshots', render: ({ site }) => <DbSnapshot site={site} context={context} /> },
 			{ path: '/debugging-tool-cache-flush', menuItem: 'Cache Flush', render: ({ site }) => <CacheFlush site={site} context={context} /> },
 			{ path: '/debugging-tool-server-config', menuItem: 'Server Config', render: ({ site }) => <ServerConfig site={site} context={context} /> },
+			{ path: '/debugging-tool-cron', menuItem: 'Cron Manager', render: ({ site }) => <CronManager site={site} context={context} /> },
+			{ path: '/debugging-tool-users', menuItem: 'User Switcher', render: ({ site }) => <UserSwitcher site={site} context={context} /> },
 		);
 		return items;
 	});

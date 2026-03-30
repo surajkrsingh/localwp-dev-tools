@@ -13,6 +13,8 @@ A powerful LocalWP addon that brings essential WordPress debugging and developme
 | **DB Snapshots** | Backup & restore database with one click | Named snapshots via `mysqldump`, instant restore via `mysql` import, download `.sql` files, stored in `wp-content/uploads/db-snapshots/` |
 | **Cache Flush** | Clear WordPress caches without code | Object Cache, Transients, Rewrite Rules, OPcache, Post Revisions — individual or Flush All at once |
 | **Server Config** | Adjust PHP settings from the UI | `memory_limit`, `max_execution_time`, `upload_max_filesize`, `post_max_size`, `display_errors`, and more — preset dropdowns + custom values, edits `php.ini` directly |
+| **Cron Manager** | View and manage WP-Cron scheduled events | Card layout with hook name, next run time, recurrence — Run Now or Delete any event, overdue events highlighted |
+| **User Switcher** | Login as any WP user with one click | Search by name/email/ID, filter by role, pagination (20/page) for 1000+ users, one-click auto-login via secure one-time URL (60s expiry) |
 
 ## Installation
 

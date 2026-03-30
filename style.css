@@ -892,6 +892,213 @@
 	font-size: 12px;
 }
 
+/* ─── Cron Manager ─── */
+
+.debugging-tool-cron-list {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.debugging-tool-cron-card {
+	padding: 14px 20px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	transition: background 0.15s;
+}
+
+.debugging-tool-cron-card:last-child {
+	border-bottom: none;
+}
+
+.debugging-tool-cron-card:hover {
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.debugging-tool-cron-card-header {
+	margin-bottom: 10px;
+}
+
+.debugging-tool-cron-hook-name {
+	font-size: 13px;
+	font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+	color: inherit;
+	background: rgba(255, 255, 255, 0.06);
+	padding: 4px 8px;
+	border-radius: 5px;
+	word-break: break-all;
+	line-height: 1.6;
+}
+
+.debugging-tool-cron-card-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.debugging-tool-cron-meta {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.debugging-tool-cron-tag {
+	font-size: 11px;
+	padding: 3px 10px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.06);
+	opacity: 0.6;
+	font-weight: 500;
+}
+
+.debugging-tool-cron-tag-overdue {
+	background: rgba(248, 113, 113, 0.15);
+	color: #f87171;
+	opacity: 1;
+	font-weight: 600;
+}
+
+.debugging-tool-cron-tag-recurrence {
+	opacity: 0.4;
+}
+
+.debugging-tool-cron-actions {
+	display: flex;
+	gap: 6px;
+	flex-shrink: 0;
+}
+
+.debugging-tool-footer-count {
+	font-size: 12px;
+	opacity: 0.4;
+}
+
+/* ─── User Switcher ─── */
+
+.debugging-tool-user-toolbar {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 16px;
+	flex-wrap: wrap;
+}
+
+.debugging-tool-user-toolbar .debugging-tool-input {
+	flex: 1;
+	min-width: 180px;
+	max-width: none;
+}
+
+.debugging-tool-user-toolbar .debugging-tool-select {
+	min-width: 120px;
+}
+
+.debugging-tool-user-count {
+	font-size: 12px;
+	opacity: 0.4;
+	white-space: nowrap;
+}
+
+.debugging-tool-user-id {
+	font-size: 11px;
+	opacity: 0.35;
+	margin-left: 6px;
+	font-weight: 400;
+}
+
+.debugging-tool-pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	margin-top: 16px;
+}
+
+.debugging-tool-pagination-info {
+	font-size: 12px;
+	opacity: 0.5;
+}
+
+.debugging-tool-user-list {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.debugging-tool-user-item {
+	display: flex;
+	align-items: center;
+	padding: 14px 20px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	gap: 16px;
+	transition: background 0.15s;
+}
+
+.debugging-tool-user-item:last-child {
+	border-bottom: none;
+}
+
+.debugging-tool-user-item:hover {
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.debugging-tool-user-avatar {
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	background: rgba(81, 187, 123, 0.15);
+	color: #51bb7b;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	font-size: 16px;
+	flex-shrink: 0;
+}
+
+.debugging-tool-user-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.debugging-tool-user-name {
+	font-weight: 600;
+	font-size: 14px;
+	color: inherit;
+	margin-bottom: 4px;
+}
+
+.debugging-tool-user-meta {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-size: 11px;
+	opacity: 0.45;
+	flex-wrap: wrap;
+}
+
+.debugging-tool-user-role {
+	padding: 2px 8px;
+	border-radius: 10px;
+	font-size: 10px;
+	font-weight: 600;
+	text-transform: capitalize;
+	border: 1px solid;
+	opacity: 1;
+}
+
+.debugging-tool-user-action {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-shrink: 0;
+}
+
 /* ─── Light Mode Overrides ─── */
 /* LocalWP adds a 'light' or similar class on the body for light theme */
 
@@ -1000,5 +1207,29 @@
 		border-color: rgba(0, 0, 0, 0.15);
 		background-color: rgba(0, 0, 0, 0.03);
 		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23555'/%3E%3C/svg%3E");
+	}
+	.debugging-tool-cron-hook-name {
+		background: rgba(0, 0, 0, 0.05);
+	}
+	.debugging-tool-cron-list {
+		border-color: rgba(0, 0, 0, 0.1);
+	}
+	.debugging-tool-cron-card {
+		border-bottom-color: rgba(0, 0, 0, 0.06);
+	}
+	.debugging-tool-cron-card:hover {
+		background: rgba(0, 0, 0, 0.02);
+	}
+	.debugging-tool-cron-tag {
+		background: rgba(0, 0, 0, 0.05);
+	}
+	.debugging-tool-user-list {
+		border-color: rgba(0, 0, 0, 0.1);
+	}
+	.debugging-tool-user-item {
+		border-bottom-color: rgba(0, 0, 0, 0.06);
+	}
+	.debugging-tool-user-item:hover {
+		background: rgba(0, 0, 0, 0.02);
 	}
 }
