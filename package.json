@@ -1,0 +1,32 @@
+{
+  "name": "localwp-debugging-tool",
+  "productName": "LocalWP Dev Tools",
+  "version": "1.0.0",
+  "description": "LocalWP addon for debugging WordPress sites - manage plugins, themes, debug mode, error logs, DB snapshots, cache flush, and server config",
+  "main": "lib/main.js",
+  "renderer": "lib/renderer.js",
+  "scripts": {
+    "build": "tsc && babel src --out-dir lib --extensions '.js,.jsx,.ts,.tsx'",
+    "watch": "babel src --out-dir lib --extensions '.js,.jsx,.ts,.tsx' --watch"
+  },
+  "local": {
+    "minVersion": "6.5.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.20.0",
+    "@babel/core": "^7.20.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.0",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/preset-react": "^7.18.0",
+    "@babel/preset-typescript": "^7.18.0",
+    "@getflywheel/local": "^6.5.2",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@getflywheel/local-components": "^17.8.1"
+  },
+  "icon": "icon.svg",
+  "bgColor": "#2b2d30",
+  "author": "Suraj Singh",
+  "license": "MIT"
+}

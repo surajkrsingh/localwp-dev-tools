@@ -1,0 +1,1004 @@
+/* ─── Debugging Tool Addon — Theme-Aware Styles ─── */
+
+.debugging-tool-container {
+	padding: 28px 32px;
+	max-width: 920px;
+	color: inherit;
+}
+
+.debugging-tool-header {
+	margin-bottom: 28px;
+}
+
+.debugging-tool-title {
+	font-size: 24px;
+	font-weight: 700;
+	color: inherit;
+	margin: 0 0 8px 0;
+	letter-spacing: -0.3px;
+}
+
+.debugging-tool-subtitle {
+	font-size: 13px;
+	opacity: 0.55;
+	margin: 0;
+	line-height: 1.5;
+}
+
+/* ─── Error ─── */
+
+.debugging-tool-error {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: rgba(220, 38, 38, 0.1);
+	border: 1px solid rgba(220, 38, 38, 0.25);
+	border-radius: 8px;
+	padding: 12px 16px;
+	margin-bottom: 20px;
+	color: #f87171;
+	font-size: 13px;
+}
+
+/* ─── Loading ─── */
+
+.debugging-tool-loading {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 48px 0;
+	justify-content: center;
+	opacity: 0.6;
+	font-size: 14px;
+}
+
+.debugging-tool-spinner {
+	width: 20px;
+	height: 20px;
+	border: 2.5px solid rgba(255, 255, 255, 0.15);
+	border-top-color: #51bb7b;
+	border-radius: 50%;
+	animation: debugging-tool-spin 0.6s linear infinite;
+}
+
+.debugging-tool-spinner-small {
+	width: 14px;
+	height: 14px;
+	border: 2px solid rgba(255, 255, 255, 0.15);
+	border-top-color: #51bb7b;
+	border-radius: 50%;
+	animation: debugging-tool-spin 0.6s linear infinite;
+	margin-left: 8px;
+	flex-shrink: 0;
+}
+
+@keyframes debugging-tool-spin {
+	to { transform: rotate(360deg); }
+}
+
+/* ─── Plugin Table ─── */
+
+.debugging-tool-table-wrapper {
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.debugging-tool-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 13px;
+	table-layout: fixed;
+}
+
+.debugging-tool-table thead {
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.debugging-tool-table th {
+	text-align: left;
+	padding: 12px 16px;
+	font-weight: 600;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.8px;
+	opacity: 0.5;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	color: inherit;
+}
+
+.debugging-tool-col-checkbox { width: 44px; text-align: center !important; }
+.debugging-tool-col-plugin { width: auto; }
+.debugging-tool-col-version { width: 90px; }
+.debugging-tool-col-status { width: 100px; }
+.debugging-tool-col-toggle { width: 80px; }
+
+.debugging-tool-table td {
+	padding: 12px 16px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	color: inherit;
+	vertical-align: middle;
+}
+
+.debugging-tool-table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+.debugging-tool-table tbody tr {
+	transition: background 0.15s;
+}
+
+.debugging-tool-table tbody tr:hover {
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.debugging-tool-row-active {}
+
+.debugging-tool-row-inactive {
+	opacity: 0.5;
+}
+
+.debugging-tool-toggle-cell {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.debugging-tool-plugin-name {
+	font-weight: 600;
+	font-size: 13px;
+	color: inherit;
+	margin-bottom: 2px;
+}
+
+.debugging-tool-plugin-slug {
+	font-size: 11px;
+	opacity: 0.4;
+	font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+.debugging-tool-version {
+	font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+	font-size: 12px;
+	opacity: 0.6;
+}
+
+.debugging-tool-empty {
+	text-align: center;
+	opacity: 0.4;
+	padding: 32px 0 !important;
+}
+
+/* ─── Checkbox ─── */
+
+.debugging-tool-checkbox-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.debugging-tool-checkbox-wrap input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+	position: absolute;
+}
+
+.debugging-tool-checkmark {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	border: 2px solid rgba(255, 255, 255, 0.25);
+	border-radius: 4px;
+	position: relative;
+	transition: all 0.15s ease;
+	background: transparent;
+	flex-shrink: 0;
+}
+
+.debugging-tool-checkbox-wrap input:checked + .debugging-tool-checkmark {
+	background: #51bb7b;
+	border-color: #51bb7b;
+}
+
+.debugging-tool-checkbox-wrap input:checked + .debugging-tool-checkmark::after {
+	content: '';
+	position: absolute;
+	left: 5px;
+	top: 1px;
+	width: 5px;
+	height: 10px;
+	border: solid #fff;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+.debugging-tool-checkbox-wrap input:disabled + .debugging-tool-checkmark {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+/* ─── Bulk Action Bar ─── */
+
+.debugging-tool-bulk-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: rgba(81, 187, 123, 0.1);
+	border: 1px solid rgba(81, 187, 123, 0.25);
+	border-radius: 8px;
+	padding: 10px 16px;
+	margin-bottom: 16px;
+}
+
+.debugging-tool-bulk-count {
+	font-size: 13px;
+	font-weight: 600;
+	color: #51bb7b;
+}
+
+.debugging-tool-bulk-actions {
+	display: flex;
+	gap: 8px;
+}
+
+/* ─── Theme Manager ─── */
+
+.debugging-tool-theme-grid {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.debugging-tool-theme-card {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 20px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	transition: background 0.15s;
+}
+
+.debugging-tool-theme-card:last-child {
+	border-bottom: none;
+}
+
+.debugging-tool-theme-card:hover {
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.debugging-tool-theme-active {
+	background: rgba(81, 187, 123, 0.06);
+	border-left: 3px solid #51bb7b;
+}
+
+.debugging-tool-theme-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.debugging-tool-theme-name {
+	font-weight: 600;
+	font-size: 14px;
+	color: inherit;
+	margin-bottom: 4px;
+}
+
+.debugging-tool-theme-meta {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.debugging-tool-theme-slug {
+	font-size: 11px;
+	opacity: 0.4;
+	font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+.debugging-tool-theme-version {
+	font-size: 11px;
+	opacity: 0.35;
+}
+
+.debugging-tool-theme-action {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-left: 16px;
+	flex-shrink: 0;
+}
+
+/* ─── Selected Row ─── */
+
+.debugging-tool-row-selected {
+	background: rgba(81, 187, 123, 0.06) !important;
+}
+
+/* ─── Toggle Switch ─── */
+
+.debugging-tool-switch {
+	position: relative;
+	display: inline-block;
+	width: 38px;
+	height: 22px;
+	flex-shrink: 0;
+}
+
+.debugging-tool-switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+	position: absolute;
+}
+
+.debugging-tool-slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(255, 255, 255, 0.15);
+	transition: 0.2s ease;
+	border-radius: 22px;
+}
+
+.debugging-tool-slider:before {
+	position: absolute;
+	content: "";
+	height: 16px;
+	width: 16px;
+	left: 3px;
+	bottom: 3px;
+	background-color: rgba(255, 255, 255, 0.7);
+	transition: 0.2s ease;
+	border-radius: 50%;
+}
+
+.debugging-tool-switch input:checked + .debugging-tool-slider {
+	background-color: #51bb7b;
+}
+
+.debugging-tool-switch input:checked + .debugging-tool-slider:before {
+	transform: translateX(16px);
+	background-color: #fff;
+}
+
+.debugging-tool-switch input:disabled + .debugging-tool-slider {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+/* ─── Badge ─── */
+
+.debugging-tool-badge {
+	display: inline-block;
+	padding: 3px 10px;
+	border-radius: 12px;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: capitalize;
+	letter-spacing: 0.2px;
+}
+
+.debugging-tool-badge-active {
+	background: rgba(81, 187, 123, 0.15);
+	color: #51bb7b;
+}
+
+.debugging-tool-badge-inactive {
+	background: rgba(255, 255, 255, 0.08);
+	color: inherit;
+	opacity: 0.5;
+}
+
+.debugging-tool-badge-update {
+	background: rgba(251, 191, 36, 0.15);
+	color: #fbbf24;
+}
+
+/* ─── Debug Mode Section ─── */
+
+.debugging-tool-debug-list {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.debugging-tool-debug-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 20px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	transition: background 0.15s;
+}
+
+.debugging-tool-debug-item:last-child {
+	border-bottom: none;
+}
+
+.debugging-tool-debug-item:hover {
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.debugging-tool-debug-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.debugging-tool-debug-label {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 6px;
+}
+
+.debugging-tool-debug-label code {
+	font-size: 13px;
+	font-weight: 700;
+	color: inherit;
+	background: rgba(255, 255, 255, 0.08);
+	padding: 3px 8px;
+	border-radius: 5px;
+	font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+.debugging-tool-debug-description {
+	font-size: 12px;
+	opacity: 0.45;
+	line-height: 1.5;
+}
+
+.debugging-tool-debug-toggle {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-left: 20px;
+	flex-shrink: 0;
+}
+
+/* ─── Footer / Buttons ─── */
+
+.debugging-tool-footer {
+	display: flex;
+	gap: 10px;
+	margin-top: 24px;
+}
+
+.debugging-tool-btn {
+	padding: 8px 18px;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.06);
+	color: inherit;
+	font-size: 13px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.15s ease;
+}
+
+.debugging-tool-btn:hover {
+	background: rgba(255, 255, 255, 0.1);
+	border-color: rgba(255, 255, 255, 0.25);
+}
+
+.debugging-tool-btn:disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+}
+
+.debugging-tool-btn-primary {
+	background: #51bb7b;
+	color: #fff;
+	border-color: #51bb7b;
+}
+
+.debugging-tool-btn-primary:hover {
+	background: #43a869;
+	border-color: #43a869;
+}
+
+.debugging-tool-btn-small {
+	padding: 5px 14px;
+	font-size: 12px;
+}
+
+.debugging-tool-btn-danger {
+	background: rgba(239, 68, 68, 0.15);
+	color: #f87171;
+	border-color: rgba(239, 68, 68, 0.3);
+}
+
+.debugging-tool-btn-danger:hover {
+	background: rgba(239, 68, 68, 0.25);
+	border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* ─── Error Log Viewer ─── */
+
+.debugging-tool-log-meta {
+	display: flex;
+	gap: 20px;
+	font-size: 12px;
+	opacity: 0.5;
+	margin-bottom: 12px;
+	flex-wrap: wrap;
+}
+
+.debugging-tool-log-path {
+	font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+	font-size: 11px;
+	opacity: 0.7;
+}
+
+.debugging-tool-log-wrapper {
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+	max-height: 500px;
+	overflow-y: auto;
+}
+
+.debugging-tool-log-content {
+	margin: 0;
+	padding: 16px 20px;
+	font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+	font-size: 12px;
+	line-height: 1.7;
+	color: inherit;
+	white-space: pre-wrap;
+	word-break: break-all;
+	opacity: 0.85;
+}
+
+.debugging-tool-log-empty {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 48px 20px;
+	opacity: 0.5;
+	text-align: center;
+}
+
+.debugging-tool-log-empty-icon {
+	font-size: 28px;
+	margin-bottom: 12px;
+	opacity: 0.4;
+}
+
+.debugging-tool-log-empty-text {
+	font-size: 15px;
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+
+.debugging-tool-log-empty-hint {
+	font-size: 12px;
+	opacity: 0.7;
+	max-width: 320px;
+	line-height: 1.5;
+}
+
+/* ─── DB Snapshots ─── */
+
+.debugging-tool-snapshot-create {
+	margin-bottom: 20px;
+}
+
+.debugging-tool-snapshot-form {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.debugging-tool-input {
+	padding: 8px 14px;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.06);
+	color: inherit;
+	font-size: 13px;
+	outline: none;
+	flex: 1;
+	max-width: 280px;
+	transition: border-color 0.15s;
+}
+
+.debugging-tool-input:focus {
+	border-color: #51bb7b;
+}
+
+.debugging-tool-input::placeholder {
+	opacity: 0.35;
+}
+
+.debugging-tool-snapshot-progress {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 10px;
+	font-size: 12px;
+	opacity: 0.6;
+}
+
+.debugging-tool-snapshot-list {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.debugging-tool-snapshot-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 14px 20px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	transition: background 0.15s;
+}
+
+.debugging-tool-snapshot-item:last-child {
+	border-bottom: none;
+}
+
+.debugging-tool-snapshot-item:hover {
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.debugging-tool-snapshot-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.debugging-tool-snapshot-name {
+	font-weight: 600;
+	font-size: 13px;
+	color: inherit;
+	margin-bottom: 4px;
+	font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+	word-break: break-all;
+}
+
+.debugging-tool-snapshot-meta {
+	display: flex;
+	gap: 16px;
+	font-size: 11px;
+	opacity: 0.4;
+}
+
+.debugging-tool-snapshot-actions {
+	display: flex;
+	gap: 6px;
+	margin-left: 16px;
+	flex-shrink: 0;
+}
+
+/* ─── Cache Flush ─── */
+
+.debugging-tool-flush-list {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.debugging-tool-flush-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 20px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	transition: background 0.15s;
+}
+
+.debugging-tool-flush-item:last-child {
+	border-bottom: none;
+}
+
+.debugging-tool-flush-item:hover {
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.debugging-tool-flush-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.debugging-tool-flush-label {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 5px;
+}
+
+.debugging-tool-flush-name {
+	font-weight: 600;
+	font-size: 14px;
+	color: inherit;
+}
+
+.debugging-tool-flush-command {
+	font-size: 11px;
+	font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+	background: rgba(255, 255, 255, 0.08);
+	padding: 2px 7px;
+	border-radius: 4px;
+	opacity: 0.45;
+}
+
+.debugging-tool-flush-description {
+	font-size: 12px;
+	opacity: 0.45;
+	line-height: 1.5;
+}
+
+.debugging-tool-flush-result {
+	font-size: 11px;
+	margin-top: 5px;
+	font-weight: 600;
+}
+
+.debugging-tool-flush-success {
+	color: #51bb7b;
+}
+
+.debugging-tool-flush-error-msg {
+	color: #f87171;
+}
+
+.debugging-tool-flush-action {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-left: 16px;
+	flex-shrink: 0;
+}
+
+/* ─── Server Config ─── */
+
+.debugging-tool-notice {
+	display: flex;
+	align-items: center;
+	background: rgba(251, 191, 36, 0.1);
+	border: 1px solid rgba(251, 191, 36, 0.25);
+	border-radius: 8px;
+	padding: 10px 16px;
+	margin-bottom: 16px;
+	color: #fbbf24;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+.debugging-tool-server-list {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.debugging-tool-server-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 14px 20px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	transition: background 0.15s;
+	gap: 16px;
+}
+
+.debugging-tool-server-item:last-child {
+	border-bottom: none;
+}
+
+.debugging-tool-server-item:hover {
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.debugging-tool-server-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.debugging-tool-server-label {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 4px;
+}
+
+.debugging-tool-server-name {
+	font-weight: 600;
+	font-size: 14px;
+	color: inherit;
+}
+
+.debugging-tool-server-key {
+	font-size: 11px;
+	font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+	background: rgba(255, 255, 255, 0.08);
+	padding: 2px 7px;
+	border-radius: 4px;
+	opacity: 0.45;
+}
+
+.debugging-tool-server-description {
+	font-size: 12px;
+	opacity: 0.45;
+	line-height: 1.5;
+}
+
+.debugging-tool-server-suffix {
+	opacity: 0.7;
+}
+
+.debugging-tool-server-control {
+	flex-shrink: 0;
+	min-width: 160px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.debugging-tool-server-select-wrap {
+	position: relative;
+}
+
+.debugging-tool-select {
+	padding: 7px 32px 7px 12px;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.06);
+	color: inherit;
+	font-size: 13px;
+	outline: none;
+	cursor: pointer;
+	appearance: none;
+	-webkit-appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	min-width: 140px;
+	transition: border-color 0.15s;
+}
+
+.debugging-tool-select:focus {
+	border-color: #51bb7b;
+}
+
+.debugging-tool-select:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+.debugging-tool-server-custom {
+	display: flex;
+	gap: 6px;
+	align-items: center;
+}
+
+.debugging-tool-input-sm {
+	max-width: 120px;
+	padding: 6px 10px;
+	font-size: 12px;
+}
+
+/* ─── Light Mode Overrides ─── */
+/* LocalWP adds a 'light' or similar class on the body for light theme */
+
+@media (prefers-color-scheme: light) {
+	.debugging-tool-spinner {
+		border-color: rgba(0, 0, 0, 0.1);
+		border-top-color: #51bb7b;
+	}
+	.debugging-tool-spinner-small {
+		border-color: rgba(0, 0, 0, 0.1);
+		border-top-color: #51bb7b;
+	}
+	.debugging-tool-table-wrapper,
+	.debugging-tool-debug-list,
+	.debugging-tool-theme-grid {
+		border-color: rgba(0, 0, 0, 0.1);
+	}
+	.debugging-tool-theme-card {
+		border-bottom-color: rgba(0, 0, 0, 0.06);
+	}
+	.debugging-tool-theme-card:hover {
+		background: rgba(0, 0, 0, 0.02);
+	}
+	.debugging-tool-table thead {
+		background: rgba(0, 0, 0, 0.03);
+	}
+	.debugging-tool-table th {
+		border-bottom-color: rgba(0, 0, 0, 0.08);
+	}
+	.debugging-tool-table td {
+		border-bottom-color: rgba(0, 0, 0, 0.05);
+	}
+	.debugging-tool-table tbody tr:hover,
+	.debugging-tool-debug-item:hover {
+		background: rgba(0, 0, 0, 0.02);
+	}
+	.debugging-tool-debug-item {
+		border-bottom-color: rgba(0, 0, 0, 0.06);
+	}
+	.debugging-tool-slider {
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+	.debugging-tool-slider:before {
+		background-color: #fff;
+	}
+	.debugging-tool-debug-label code {
+		background: rgba(0, 0, 0, 0.06);
+	}
+	.debugging-tool-badge-inactive {
+		background: rgba(0, 0, 0, 0.06);
+	}
+	.debugging-tool-btn {
+		border-color: rgba(0, 0, 0, 0.15);
+		background: rgba(0, 0, 0, 0.03);
+	}
+	.debugging-tool-btn:hover {
+		background: rgba(0, 0, 0, 0.06);
+		border-color: rgba(0, 0, 0, 0.2);
+	}
+	.debugging-tool-checkmark {
+		border-color: rgba(0, 0, 0, 0.25);
+	}
+	.debugging-tool-bulk-bar {
+		background: rgba(81, 187, 123, 0.08);
+		border-color: rgba(81, 187, 123, 0.2);
+	}
+	.debugging-tool-log-wrapper,
+	.debugging-tool-snapshot-list {
+		border-color: rgba(0, 0, 0, 0.1);
+	}
+	.debugging-tool-snapshot-item {
+		border-bottom-color: rgba(0, 0, 0, 0.06);
+	}
+	.debugging-tool-snapshot-item:hover {
+		background: rgba(0, 0, 0, 0.02);
+	}
+	.debugging-tool-input {
+		border-color: rgba(0, 0, 0, 0.15);
+		background: rgba(0, 0, 0, 0.03);
+	}
+	.debugging-tool-flush-list {
+		border-color: rgba(0, 0, 0, 0.1);
+	}
+	.debugging-tool-flush-item {
+		border-bottom-color: rgba(0, 0, 0, 0.06);
+	}
+	.debugging-tool-flush-item:hover {
+		background: rgba(0, 0, 0, 0.02);
+	}
+	.debugging-tool-flush-command {
+		background: rgba(0, 0, 0, 0.06);
+	}
+	.debugging-tool-server-list {
+		border-color: rgba(0, 0, 0, 0.1);
+	}
+	.debugging-tool-server-item {
+		border-bottom-color: rgba(0, 0, 0, 0.06);
+	}
+	.debugging-tool-server-item:hover {
+		background: rgba(0, 0, 0, 0.02);
+	}
+	.debugging-tool-server-key {
+		background: rgba(0, 0, 0, 0.06);
+	}
+	.debugging-tool-select {
+		border-color: rgba(0, 0, 0, 0.15);
+		background-color: rgba(0, 0, 0, 0.03);
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23555'/%3E%3C/svg%3E");
+	}
+}
