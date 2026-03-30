@@ -1,0 +1,14 @@
+.git/
+.github/
+.claude/
+.gitignore
+.distignore
+.babelrc
+tsconfig.json
+src/
+scripts/
+dist/
+node_modules/
+CLAUDE.md
+*.log
+.DS_Store
